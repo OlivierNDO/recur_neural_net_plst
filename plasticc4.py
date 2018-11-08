@@ -15,12 +15,12 @@ from sklearn.preprocessing import StandardScaler
 
 # Import Data
 ####################################################################
-folder_path = "C:/Users/user/Desktop/plasticc/"
-save_folder_path = "C:/Users/user/Desktop/plasticc/tf_model_dir/"
+folder_path = ".../plasticc/"
+save_folder_path = ".../plasticc/tf_model_dir/"
 train = pd.read_csv(folder_path + "training_set.csv")
 train_meta = pd.read_csv(folder_path + "training_set_metadata.csv")
 test = pd.read_csv(folder_path + "test_reform.csv")
-test_pred_path = "C:/Users/user/Desktop/plasticc/test_output/"
+test_pred_path = ".../plasticc/test_output/"
 
 # Define Functions
 ####################################################################
@@ -266,33 +266,8 @@ rnn_training = multiclass_rnn(trn_x = train_x_resized,
                               save_dir = save_folder_path)
 
 test_prediction = pd.concat([test_id, rnn_training], axis = 1)
-test_prediction.columns = ['object_id','class_6','class_15','class_16','class_42','class_52','class_53',
-                           'class_62','class_64','class_65','class_67','class_88','class_90','class_92','class_95','class_99']
-test_prediction.to_csv(test_pred_path + "submission1.csv", index = False)
-
-
-
-
-
-def pd_remaining_prob(df, excl_col = 'object_id'):
-    return [(1 - i) for i in df.drop(excl_col, axis = 1).sum(axis = 0)]
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#test_prediction.columns = ['object_id','class_6','class_15','class_16','class_42','class_52','class_53',
+#                           'class_62','class_64','class_65','class_67','class_88','class_90','class_92','class_95','class_99']
+#test_prediction.to_csv(test_pred_path + "submission1.csv", index = False)
+#def pd_remaining_prob(df, excl_col = 'object_id'):
+#    return [(1 - i) for i in df.drop(excl_col, axis = 1).sum(axis = 0)]
